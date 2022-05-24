@@ -1,7 +1,10 @@
+var DateTime = luxon.DateTime;
+
 const app = new Vue({
   el: "#app",
   data: {
     currentContactId: 0,
+    newMessage: "",
     user: {
       name: "Sofia",
       avatar: "_io",
@@ -175,22 +178,45 @@ const app = new Vue({
       return `img/avatar${name}.jpg`;
     },
     getMessageHour(message) {
-      const date = message.date.split(" ");
-      const splitedHour = date[1].split(":");
-      return `${splitedHour[0]}:${splitedHour[1]}`;
+      return DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
     },
     getLastMessageText(contact) {
       return contact.messages[contact.messages.length - 1].message;
     },
     getLastMessageDate(contact) {
-      return contact.messages[contact.messages.length - 1].date;
+      const date = contact.messages[contact.messages.length - 1].date;
+      return DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toRelativeCalendar();
     },
     getLastMessageHour(contact) {
       const lastMessage = contact.messages[contact.messages.length - 1];
-      return this.getMessageHour(lastMessage);
+      const lastDate = DateTime.fromFormat(lastMessage.date, "dd/MM/yyyy HH:mm:ss");
+      const diff = DateTime.now().diff(lastDate, "days");
+
+      if (diff.days < 1) {
+        return this.getMessageHour(lastMessage);
+      } else if (diff.days > 1 && diff.days <= 7) {
+        return lastDate.toRelativeCalendar();
+      }
+
+      return lastDate.toFormat("dd/MM/yyyy");
+    },
+    getActualDate() {
+      return DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
     },
     selectContact(index) {
       this.currentContactId = index;
+    },
+    sendMessage(contact) {
+      if (!this.newMessage) return;
+
+      const message = {
+        date: this.getActualDate(),
+        message: this.newMessage,
+        status: "sent",
+      };
+
+      contact.messages.push(message);
+      this.newMessage = "";
     },
   },
 });

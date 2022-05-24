@@ -70,7 +70,7 @@
               <img class="contact-bar__img" :src="getImage(contacts[currentContactId].avatar)" alt="">
               <div class="contact-bar__text-wrapper">
                 <span class="contact-bar__name">{{ contacts[currentContactId].name }}</span>
-                <span class="contact-bar__date">Ultimo accesso il {{ getLastMessageDate(contacts[currentContactId]) }}</span>
+                <span class="contact-bar__date">Ultimo accesso {{ getLastMessageDate(contacts[currentContactId]) }}</span>
               </div>
             </div>
             <div class="contact-bar__right">
@@ -103,7 +103,7 @@
             <button class="btn btn-emoji">
               <i class="fa-regular fa-face-smile"></i>
             </button>
-            <input class="message-bar__text-input" type="text" placeholder="Scrivi un messaggio">
+            <input class="message-bar__text-input" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage(contacts[currentContactId])">
             <button class="btn btn-audio">
               <i class="fa-solid fa-microphone"></i>
             </button>
@@ -113,6 +113,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
