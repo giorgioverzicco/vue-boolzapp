@@ -1,0 +1,33 @@
+/* ===================
+  RESET
+=================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===================
+  VARS
+=================== */
+:root {
+  --clr-bg-primary: #dbdbd3;
+  --clr-bg-secondary: #009688;
+
+  --clr-primary: #fff;
+  --clr-secondary: #eaeaea;
+  --clr-accent: #f3eeea;
+
+  --clr-icon: #b1b1b1;
+  --clr-hover: #e9ebeb;
+  --clr-sent: #d5f9ba;
+  --clr-received: #ffffff;
+  --clr-notification: #8edafc;
+}
+
+/* ===================
+  TYPO
+=================== */
+body {
+  font-family: "Lato", sans-serif;
+}
