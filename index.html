@@ -10,13 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- /google fonts -->
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- /font awesome -->
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <div class="container">
       <div id="app">
-        <div class="app__left"></div>
-        <div class="app__right"></div>
+        <div class="app__left">
+          <div class="bar user-bar">
+            <div class="user-bar__left">
+              <img class="user-bar__img" src="img/avatar_io.jpg" alt="">
+              <span class="user-bar__name">Nome Utente</span>
+            </div>
+            <div class="user-bar__right">
+              <button class="btn btn-stories">
+                <i class="fa-solid fa-circle-notch"></i>
+              </button>
+              <button class="btn btn-new-message">
+                <i class="fa-solid fa-message"></i>
+              </button>
+              <button class="btn btn-options">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="app__right">
+          <div class="bar message-bar"></div>
+        </div>
       </div>
     </div>
 
