@@ -199,6 +199,7 @@ body {
   left: 30px;
   transform: translateY(-50%);
   font-size: var(--fs-sm);
+  cursor: unset;
 }
 
 .search-bar__text-input:focus,

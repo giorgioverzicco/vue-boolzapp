@@ -6,6 +6,7 @@ const app = new Vue({
     replyTimeoutId: null,
     currentContactId: 0,
     newMessage: "",
+    searchText: "",
     user: {
       name: "Sofia",
       avatar: "_io",
@@ -173,6 +174,16 @@ const app = new Vue({
         ],
       },
     ],
+  },
+  computed: {
+    filteredContacts() {
+      if (!this.searchText) {
+        return this.contacts;
+      }
+
+      this.searchText = this.searchText.toLowerCase();
+      return this.contacts.filter((c) => c.name.toLowerCase().includes(this.searchText));
+    },
   },
   methods: {
     getImage(name) {

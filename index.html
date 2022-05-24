@@ -47,14 +47,14 @@
           </div>
           <div class="search-bar">
             <div class="search-bar__wrapper">
-              <input class="search-bar__text-input" type="text" placeholder="Cerca o inizia una nuova chat">
+              <input class="search-bar__text-input" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
               <button class="btn btn-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
           </div>
           <div class="contacts">
-            <div class="contact" v-for="(contact, idx) in contacts" :key="contact.name" @click="selectContact(idx)">
+            <div class="contact" v-for="(contact, idx) in filteredContacts" :key="contact.name" @click="selectContact(idx)">
               <img class="contact__img" :src="getImage(contact.avatar)" alt="">
               <div class="contact__text-wrapper">
                 <span class="contact__name">{{ contact.name }}</span>
