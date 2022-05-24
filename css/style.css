@@ -18,7 +18,7 @@
   --clr-secondary: #eaeaea;
   --clr-accent: #f3eeea;
 
-  --clr-search-text: #fafafa;
+  --clr-search-bar: #fafafa;
   --clr-icon: #b1b1b1;
   --clr-hover: #e9ebeb;
   --clr-sent: #d5f9ba;
@@ -81,7 +81,6 @@ body {
 .bar {
   --bar-height: 80px;
 
-  width: 100%;
   height: var(--bar-height);
   background-color: var(--clr-secondary);
 }
@@ -165,6 +164,40 @@ body {
 
 .desktop-notification__link {
   color: var(--clr-icon);
+}
+
+.search-bar {
+  --search-bar-height: 50px;
+
+  display: flex;
+  align-items: center;
+  height: var(--search-bar-height);
+  background-color: var(--clr-search-bar);
+  padding: 10px;
+}
+
+.search-bar__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar__text-input {
+  width: 100%;
+  height: calc(var(--search-bar-height) - 20px);
+  padding-left: 80px;
+  border: 1px solid rgba(37, 37, 37, 0.1);
+}
+
+.search-bar .btn-search {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  font-size: var(--fs-sm);
+}
+
+.search-bar__text-input:focus {
+  outline: none;
 }
 
 /* ===================
