@@ -21,8 +21,8 @@
         <div class="app__left">
           <div class="bar user-bar">
             <div class="user-bar__left">
-              <img class="user-bar__img" src="img/avatar_io.jpg" alt="">
-              <span class="user-bar__name">Nome Utente</span>
+              <img class="user-bar__img" :src="getImage(user.avatar)" alt="">
+              <span class="user-bar__name">{{ user.name }}</span>
             </div>
             <div class="user-bar__right">
               <button class="btn btn-stories">
@@ -54,23 +54,23 @@
             </div>
           </div>
           <div class="contacts">
-            <div class="contact">
-              <img class="contact__img" src="img/avatar_1.jpg" alt="">
+            <div class="contact" v-for="(contact, idx) in contacts" :key="contact.name" @click="selectContact(idx)">
+              <img class="contact__img" :src="getImage(contact.avatar)" alt="">
               <div class="contact__text-wrapper">
-                <span class="contact__name">Michele</span>
-                <span class="contact__message">Ultimo messaggio inviato</span>
+                <span class="contact__name">{{ contact.name }}</span>
+                <span class="contact__message">{{ getLastMessageText(contact) }}</span>
               </div>
-              <span class="contact__date">12:00</span>
+              <span class="contact__date">{{ getLastMessageHour(contact) }}</span>
             </div>
           </div>
         </div>
         <div class="app__right">
           <div class="bar contact-bar">
             <div class="contact-bar__left">
-              <img class="contact-bar__img" src="img/avatar_1.jpg" alt="">
+              <img class="contact-bar__img" :src="getImage(contacts[currentContactId].avatar)" alt="">
               <div class="contact-bar__text-wrapper">
-                <span class="contact-bar__name">Michele</span>
-                <span class="contact-bar__date">Ultimo accesso oggi alle 12:05</span>
+                <span class="contact-bar__name">{{ contacts[currentContactId].name }}</span>
+                <span class="contact-bar__date">Ultimo accesso il {{ getLastMessageDate(contacts[currentContactId]) }}</span>
               </div>
             </div>
             <div class="contact-bar__right">
@@ -86,16 +86,16 @@
             </div>
           </div>
           <div class="chat">
-            <div class="chat-message chat-message--sent">
+            <div class="chat-message"
+              v-for="message in contacts[currentContactId].messages"
+              :class="{
+                'chat-message--sent': message.status === 'sent',
+                'chat-message--received': message.status === 'received'
+              }"
+            >
               <div class="chat-message__bubble">
-                <div class="chat-message__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem voluptatum, pariatur sunt ratione odit perspiciatis atque beatae fuga cupiditate tempore!</div>
-                <div class="chat-message__date">12:02</div>
-              </div>
-            </div>
-            <div class="chat-message chat-message--received">
-              <div class="chat-message__bubble">
-                <div class="chat-message__text">Ehila!</div>
-                <div class="chat-message__date">12:05</div>
+                <div class="chat-message__text">{{ message.message }}</div>
+                <div class="chat-message__date">{{ getMessageHour(message) }}</div>
               </div>
             </div>
           </div>

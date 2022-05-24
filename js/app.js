@@ -1,6 +1,11 @@
 const app = new Vue({
   el: "#app",
   data: {
+    currentContactId: 0,
+    user: {
+      name: "Sofia",
+      avatar: "_io",
+    },
     contacts: [
       {
         name: "Michele",
@@ -164,5 +169,28 @@ const app = new Vue({
         ],
       },
     ],
+  },
+  methods: {
+    getImage(name) {
+      return `img/avatar${name}.jpg`;
+    },
+    getMessageHour(message) {
+      const date = message.date.split(" ");
+      const splitedHour = date[1].split(":");
+      return `${splitedHour[0]}:${splitedHour[1]}`;
+    },
+    getLastMessageText(contact) {
+      return contact.messages[contact.messages.length - 1].message;
+    },
+    getLastMessageDate(contact) {
+      return contact.messages[contact.messages.length - 1].date;
+    },
+    getLastMessageHour(contact) {
+      const lastMessage = contact.messages[contact.messages.length - 1];
+      return this.getMessageHour(lastMessage);
+    },
+    selectContact(index) {
+      this.currentContactId = index;
+    },
   },
 });
