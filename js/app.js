@@ -30,11 +30,6 @@ const app = new Vue({
             message: "Tutto fatto!",
             status: "received",
           },
-          {
-            date: "24/05/2022 23:06:02",
-            message: "Tutto fatto!",
-            status: "received",
-          },
         ],
       },
       {
