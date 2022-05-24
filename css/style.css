@@ -282,6 +282,52 @@ body {
   font-size: 1rem;
 }
 
+.chat {
+  height: calc(100% - 160px);
+  padding: 20px;
+  background-image: url(../img/mine.jpg);
+  background-position: center;
+  overflow: auto;
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.chat-message--sent {
+  justify-content: end;
+}
+
+.chat-message--received {
+  justify-content: start;
+}
+
+.chat-message--sent > .chat-message__bubble {
+  background-color: var(--clr-sent);
+}
+
+.chat-message--received > .chat-message__bubble {
+  background-color: var(--clr-received);
+}
+
+.chat-message__bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 340px;
+  padding: 15px 15px 20px;
+  border-radius: 12px;
+}
+
+.chat-message__date {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.875rem;
+  color: var(--clr-icon);
+}
+
 /* ===================
   BUTTONS
 =================== */
