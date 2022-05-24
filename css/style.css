@@ -24,6 +24,10 @@
   --clr-sent: #d5f9ba;
   --clr-received: #ffffff;
   --clr-notification: #8edafc;
+
+  --fs-sm: 1.125rem;
+  --fs-md: 1.5rem;
+  --fs-lg: 1.75rem;
 }
 
 /* ===================
@@ -122,10 +126,44 @@ body {
 
 .user-bar__name,
 .message-bar__name {
-  font-size: 1.125rem;
+  font-size: var(--fs-sm);
 }
 
 .message-bar__date {
+  color: var(--clr-icon);
+}
+
+.desktop-notification {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  background-color: var(--clr-notification);
+}
+
+.desktop-notification__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: var(--fs-md);
+  color: var(--clr-notification);
+  background-color: var(--clr-primary);
+  margin-left: 20px;
+}
+
+.desktop-notification__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.desktop-notification__text {
+  font-size: var(--fs-sm);
+}
+
+.desktop-notification__link {
   color: var(--clr-icon);
 }
 
@@ -133,7 +171,7 @@ body {
   BUTTONS
 =================== */
 .btn {
-  font-size: 1.75rem;
+  font-size: var(--fs-lg);
   color: var(--clr-icon);
   background-color: transparent;
   border: none;
