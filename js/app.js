@@ -30,6 +30,11 @@ const app = new Vue({
             message: "Tutto fatto!",
             status: "received",
           },
+          {
+            date: "24/05/2022 23:06:02",
+            message: "Tutto fatto!",
+            status: "received",
+          },
         ],
       },
       {
@@ -183,9 +188,18 @@ const app = new Vue({
     getLastMessageText(contact) {
       return contact.messages[contact.messages.length - 1].message;
     },
-    getLastMessageDate(contact) {
-      const date = contact.messages[contact.messages.length - 1].date;
-      return DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toRelativeCalendar();
+    getLastAccess(contact) {
+      const rawDate = contact.messages.filter((m) => m.status === "received").at(-1).date;
+
+      const date = DateTime.fromFormat(rawDate, "dd/MM/yyyy HH:mm:ss");
+      const diff = DateTime.now().diff(date, "days");
+      const relativeDate = date.toRelativeCalendar();
+
+      if (diff.days < 1) {
+        return `${relativeDate} alle ${date.toFormat("HH:mm")}`;
+      }
+
+      return relativeDate;
     },
     getLastMessageHour(contact) {
       const lastMessage = contact.messages[contact.messages.length - 1];

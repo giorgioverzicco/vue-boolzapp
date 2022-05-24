@@ -70,7 +70,7 @@
               <img class="contact-bar__img" :src="getImage(contacts[currentContactId].avatar)" alt="">
               <div class="contact-bar__text-wrapper">
                 <span class="contact-bar__name">{{ contacts[currentContactId].name }}</span>
-                <span class="contact-bar__date">Ultimo accesso {{ getLastMessageDate(contacts[currentContactId]) }}</span>
+                <span class="contact-bar__date">Ultimo accesso {{ getLastAccess(contacts[currentContactId]) }}</span>
               </div>
             </div>
             <div class="contact-bar__right">
