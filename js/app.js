@@ -3,6 +3,7 @@ var DateTime = luxon.DateTime;
 const app = new Vue({
   el: "#app",
   data: {
+    replyTimeoutId: null,
     currentContactId: 0,
     newMessage: "",
     user: {
@@ -226,6 +227,20 @@ const app = new Vue({
 
       contact.messages.push(message);
       this.newMessage = "";
+
+      this.getReplyFrom(contact);
+    },
+    getReplyFrom(contact) {
+      this.replyTimeoutId = setTimeout(() => {
+        const message = {
+          date: this.getActualDate(),
+          message: "ok ricevuto!",
+          status: "received",
+        };
+
+        contact.messages.push(message);
+        clearTimeout(this.replyTimeoutId);
+      }, 1000);
     },
   },
 });
