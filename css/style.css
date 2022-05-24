@@ -87,6 +87,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.user-bar {
   border-right: 1px solid var(--clr-icon);
 }
 
