@@ -178,7 +178,18 @@ const app = new Vue({
   computed: {
     filteredContacts() {
       if (!this.searchText) {
-        return this.contacts;
+        return this.contacts.sort((a, b) => {
+          const rawDateA = a.messages.at(-1).date;
+          const rawDateB = b.messages.at(-1).date;
+
+          const dateA = DateTime.fromFormat(rawDateA, "dd/MM/yyyy HH:mm:ss");
+          const dateB = DateTime.fromFormat(rawDateB, "dd/MM/yyyy HH:mm:ss");
+
+          const diffA = DateTime.now().diff(dateA, "seconds").seconds;
+          const diffB = DateTime.now().diff(dateB, "seconds").seconds;
+
+          return diffA - diffB;
+        });
       }
 
       this.searchText = this.searchText.toLowerCase();
