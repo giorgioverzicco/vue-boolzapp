@@ -25,6 +25,9 @@
 .contact-bar__right {
   display: flex;
   align-items: center;
+  gap: var(--gutter-xs);
+  height: 100%;
+  padding: var(--gutter-xs);
 }
 
 .contact-bar__text-wrapper {
@@ -40,10 +43,8 @@
 
 .user-bar__img,
 .contact-bar__img {
-  width: var(--bar-height);
-  height: var(--bar-height);
+  height: 100%;
   border-radius: 50%;
-  padding: var(--gutter-xs);
 }
 
 .user-bar__name,

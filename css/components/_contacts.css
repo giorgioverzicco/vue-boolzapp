@@ -14,6 +14,7 @@
   align-items: center;
   position: relative;
   height: var(--contact-height);
+  padding: var(--gutter-xs);
   cursor: pointer;
 }
 
@@ -25,7 +26,6 @@
 .contact__img {
   height: 100%;
   border-radius: 50%;
-  padding: var(--gutter-xs);
 }
 
 .contact__text-wrapper {
