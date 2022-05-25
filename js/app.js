@@ -207,7 +207,8 @@ const app = new Vue({
       return DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
     },
     getLastMessageText(contact) {
-      return contact.messages.at(-1).message;
+      const message = contact.messages.at(-1);
+      return message.status === "sent" ? `Tu: ${message.message}` : message.message;
     },
     getLastAccess(contact) {
       const rawDate = contact.messages.filter((m) => m.status === "received").at(-1).date;
