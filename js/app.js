@@ -195,6 +195,9 @@ const app = new Vue({
       this.searchText = this.searchText.toLowerCase();
       return this.contacts.filter((c) => c.name.toLowerCase().includes(this.searchText));
     },
+    currentContact() {
+      return this.contacts[this.currentContactId];
+    },
   },
   methods: {
     getImage(name) {
@@ -204,7 +207,7 @@ const app = new Vue({
       return DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
     },
     getLastMessageText(contact) {
-      return contact.messages[contact.messages.length - 1].message;
+      return contact.messages.at(-1).message;
     },
     getLastAccess(contact) {
       const rawDate = contact.messages.filter((m) => m.status === "received").at(-1).date;
@@ -220,7 +223,7 @@ const app = new Vue({
       return relativeDate;
     },
     getLastMessageHour(contact) {
-      const lastMessage = contact.messages[contact.messages.length - 1];
+      const lastMessage = contact.messages.at(-1);
       const lastDate = DateTime.fromFormat(lastMessage.date, "dd/MM/yyyy HH:mm:ss");
       const diff = DateTime.now().diff(lastDate, "days");
 
@@ -249,6 +252,8 @@ const app = new Vue({
 
       contact.messages.push(message);
       this.newMessage = "";
+
+      this.currentContactId = this.contacts.indexOf(contact);
 
       this.getReplyFrom(contact);
     },

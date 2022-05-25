@@ -67,10 +67,10 @@
         <div class="app__right">
           <div class="bar contact-bar">
             <div class="contact-bar__left">
-              <img class="contact-bar__img" :src="getImage(contacts[currentContactId].avatar)" alt="">
+              <img class="contact-bar__img" :src="getImage(currentContact.avatar)" alt="">
               <div class="contact-bar__text-wrapper">
-                <span class="contact-bar__name">{{ contacts[currentContactId].name }}</span>
-                <span class="contact-bar__date">Ultimo accesso {{ getLastAccess(contacts[currentContactId]) }}</span>
+                <span class="contact-bar__name">{{ currentContact.name }}</span>
+                <span class="contact-bar__date">Ultimo accesso {{ getLastAccess(currentContact) }}</span>
               </div>
             </div>
             <div class="contact-bar__right">
@@ -87,7 +87,7 @@
           </div>
           <div class="chat">
             <div class="chat-message"
-              v-for="message in contacts[currentContactId].messages"
+              v-for="message in currentContact.messages"
               :class="{
                 'chat-message--sent': message.status === 'sent',
                 'chat-message--received': message.status === 'received'
@@ -103,7 +103,7 @@
             <button class="btn btn-emoji">
               <i class="fa-regular fa-face-smile"></i>
             </button>
-            <input class="message-bar__text-input" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage(contacts[currentContactId])">
+            <input class="message-bar__text-input" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage(currentContact)">
             <button class="btn btn-audio">
               <i class="fa-solid fa-microphone"></i>
             </button>
