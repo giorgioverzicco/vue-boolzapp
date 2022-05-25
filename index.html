@@ -92,7 +92,7 @@
           </div>
           <div class="chat">
             <div class="chat-message"
-              v-for="message in currentContact.messages"
+              v-for="(message, idx) in currentContact.messages"
               :class="{
                 'chat-message--sent': message.status === 'sent',
                 'chat-message--received': message.status === 'received'
@@ -101,6 +101,14 @@
               <div class="chat-message__bubble">
                 <div class="chat-message__text">{{ message.message }}</div>
                 <div class="chat-message__date">{{ getMessageHour(message) }}</div>
+                <div class="chat-message__options" @click="openMenu(message)">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="chat-message__menu" v-if="message.menuOpen">
+                  <div class="chat-message__menu-item" @click="deleteMessage(idx)">
+                    Cancella messaggio
+                  </div>
+                </div>
               </div>
             </div>
           </div>

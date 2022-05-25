@@ -270,5 +270,11 @@ const app = new Vue({
         clearTimeout(this.replyTimeoutId);
       }, 1000);
     },
+    openMenu(message) {
+      Vue.set(message, "menuOpen", !message.menuOpen);
+    },
+    deleteMessage(index) {
+      this.currentContact.messages.splice(index, 1);
+    },
   },
 });
