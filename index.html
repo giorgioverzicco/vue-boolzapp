@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boolzapp</title>
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <!-- /google fonts -->
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- /font awesome -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="container">
@@ -21,7 +27,7 @@
         <div class="app__left">
           <div class="bar user-bar">
             <div class="user-bar__left">
-              <img class="user-bar__img" :src="getImage(user.avatar)" alt="">
+              <img class="user-bar__img" :src="getImage(user.avatar)" alt="" />
               <span class="user-bar__name">{{ user.name }}</span>
             </div>
             <div class="user-bar__right">
@@ -50,20 +56,26 @@
           </div>
           <div class="search-bar">
             <div class="search-bar__wrapper">
-              <input class="search-bar__text-input" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchText">
+              <input
+                class="search-bar__text-input"
+                type="text"
+                placeholder="Cerca o inizia una nuova chat"
+                v-model="searchText"
+              />
               <button class="btn btn-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </div>
           </div>
           <div class="contacts">
-            <div class="contact"
+            <div
+              class="contact"
               v-for="contact in filteredContacts"
               :class="{'contact--selected': currentContact === contact}"
               :key="contact.name"
               @click="selectContact(contact)"
             >
-              <img class="contact__img" :src="getImage(contact.avatar)" alt="">
+              <img class="contact__img" :src="getImage(contact.avatar)" alt="" />
               <div class="contact__text-wrapper">
                 <span class="contact__name">{{ contact.name }}</span>
                 <span class="contact__message">{{ getLastMessageText(contact) }}</span>
@@ -75,7 +87,7 @@
         <div class="app__right">
           <div class="bar contact-bar">
             <div class="contact-bar__left">
-              <img class="contact-bar__img" :src="getImage(currentContact.avatar)" alt="">
+              <img class="contact-bar__img" :src="getImage(currentContact.avatar)" alt="" />
               <div class="contact-bar__text-wrapper">
                 <span class="contact-bar__name">{{ currentContact.name }}</span>
                 <span class="contact-bar__date">Ultimo accesso {{ getLastAccess(currentContact) }}</span>
@@ -94,7 +106,8 @@
             </div>
           </div>
           <div class="chat">
-            <div class="chat-message"
+            <div
+              class="chat-message"
               v-for="(message, idx) in currentContact.messages"
               :class="{
                 'chat-message--sent': message.status === 'sent',
@@ -108,9 +121,7 @@
                   <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="chat-message__menu" v-if="message.menuOpen">
-                  <div class="chat-message__menu-item" @click="deleteMessage(idx)">
-                    Cancella messaggio
-                  </div>
+                  <div class="chat-message__menu-item" @click="deleteMessage(idx)">Cancella messaggio</div>
                 </div>
               </div>
             </div>
@@ -119,7 +130,13 @@
             <button class="btn btn-emoji">
               <i class="fa-regular fa-face-smile"></i>
             </button>
-            <input class="message-bar__text-input" type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage(currentContact)">
+            <input
+              class="message-bar__text-input"
+              type="text"
+              placeholder="Scrivi un messaggio"
+              v-model="newMessage"
+              @keyup.enter="sendMessage(currentContact)"
+            />
             <button class="btn btn-audio">
               <i class="fa-solid fa-microphone"></i>
             </button>
