@@ -1,0 +1,7 @@
+/* ===================
+  GLOBALS
+=================== */
+body {
+  height: 100vh;
+  background: linear-gradient(0deg, var(--clr-bg-primary) 85%, var(--clr-bg-secondary) 15%);
+}
