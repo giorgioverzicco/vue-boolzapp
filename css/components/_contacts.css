@@ -14,7 +14,7 @@
   align-items: center;
   position: relative;
   height: var(--contact-height);
-  padding: var(--gutter-xs);
+  padding: 0.9375rem;
   cursor: pointer;
 }
 
