@@ -54,7 +54,12 @@
             </div>
           </div>
           <div class="contacts">
-            <div class="contact" :class="{'contact--selected': currentContact === contact}" v-for="contact in filteredContacts" :key="contact.name" @click="selectContact(contact)">
+            <div class="contact"
+              v-for="contact in filteredContacts"
+              :class="{'contact--selected': currentContact === contact}"
+              :key="contact.name"
+              @click="selectContact(contact)"
+            >
               <img class="contact__img" :src="getImage(contact.avatar)" alt="">
               <div class="contact__text-wrapper">
                 <span class="contact__name">{{ contact.name }}</span>
