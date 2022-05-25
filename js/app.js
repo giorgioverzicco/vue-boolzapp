@@ -7,6 +7,7 @@ const app = new Vue({
     currentContactObj: null,
     newMessage: "",
     searchText: "",
+    notificationClosed: false,
     user: {
       name: "Sofia",
       avatar: "_io",
@@ -275,6 +276,9 @@ const app = new Vue({
     },
     deleteMessage(index) {
       this.currentContact.messages.splice(index, 1);
+    },
+    closeNotification() {
+      this.notificationClosed = true;
     },
   },
 });

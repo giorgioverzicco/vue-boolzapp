@@ -36,13 +36,16 @@
               </button>
             </div>
           </div>
-          <div class="desktop-notification">
+          <div class="desktop-notification" v-if="!notificationClosed">
             <div class="desktop-notification__icon">
               <i class="fa-solid fa-bell-slash"></i>
             </div>
             <div class="desktop-notification__text-wrapper">
               <span class="desktop-notification__text">Ricevi notifiche di nuovi messaggi</span>
               <a class="desktop-notification__link" href="#">Attiva notifiche desktop</a>
+            </div>
+            <div class="btn btn-close btn-close--fixed" @click="closeNotification">
+              <i class="fa-solid fa-xmark"></i>
             </div>
           </div>
           <div class="search-bar">

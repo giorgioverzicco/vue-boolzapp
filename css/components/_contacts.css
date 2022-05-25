@@ -2,7 +2,7 @@
   CONTACTS
 =================== */
 .contacts {
-  height: calc(100% - 14.375rem);
+  height: 100%;
   background-color: var(--clr-primary);
   overflow: auto;
 }
@@ -14,7 +14,6 @@
   align-items: center;
   position: relative;
   height: var(--contact-height);
-  padding: var(--gutter-xs);
   cursor: pointer;
 }
 
@@ -24,8 +23,7 @@
 }
 
 .contact__img {
-  width: var(--contact-height);
-  height: var(--contact-height);
+  height: 100%;
   border-radius: 50%;
   padding: var(--gutter-xs);
 }

@@ -4,9 +4,11 @@
 .desktop-notification {
   --notification-height: 6.25rem;
 
+  position: relative;
   display: flex;
   align-items: center;
   height: var(--notification-height);
+  padding: var(--gutter-md) 0;
   background-color: var(--clr-notification);
 }
 

@@ -8,3 +8,10 @@
   border: none;
   cursor: pointer;
 }
+
+.btn-close--fixed {
+  position: absolute;
+  top: var(--gutter-xs);
+  right: var(--gutter-md);
+  font-size: var(--fs-md);
+}
