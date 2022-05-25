@@ -1,0 +1,48 @@
+/* ===================
+  CHATS
+=================== */
+.chat {
+  height: calc(100% - 10rem);
+  padding: var(--gutter-md);
+  background-image: url(../../img/mine.jpg);
+  background-position: center;
+  overflow: auto;
+}
+
+.chat-message {
+  display: flex;
+  margin-bottom: var(--gutter-xs);
+}
+
+.chat-message--sent {
+  justify-content: end;
+}
+
+.chat-message--received {
+  justify-content: start;
+}
+
+.chat-message--sent > .chat-message__bubble {
+  background-color: var(--clr-sent);
+}
+
+.chat-message--received > .chat-message__bubble {
+  background-color: var(--clr-received);
+}
+
+.chat-message__bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 21.25rem;
+  padding: var(--gutter-sm) var(--gutter-sm) var(--gutter-md);
+  border-radius: 0.75rem;
+}
+
+.chat-message__date {
+  position: absolute;
+  bottom: 0.3125rem;
+  right: var(--gutter-xs);
+  font-size: var(--fs-xxs);
+  color: var(--clr-icon);
+}

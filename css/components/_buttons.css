@@ -1,0 +1,10 @@
+/* ===================
+  BUTTONS
+=================== */
+.btn {
+  font-size: var(--fs-lg);
+  color: var(--clr-icon);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

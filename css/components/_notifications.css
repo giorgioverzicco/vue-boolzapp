@@ -1,0 +1,38 @@
+/* ===================
+  NOTIFICATIONS
+=================== */
+.desktop-notification {
+  --notification-height: 6.25rem;
+
+  display: flex;
+  align-items: center;
+  height: var(--notification-height);
+  background-color: var(--clr-notification);
+}
+
+.desktop-notification__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(var(--notification-height) - var(--gutter-lg));
+  height: calc(var(--notification-height) - var(--gutter-lg));
+  border-radius: 50%;
+  font-size: var(--fs-md);
+  color: var(--clr-notification);
+  background-color: var(--clr-primary);
+  margin-left: var(--gutter-md);
+}
+
+.desktop-notification__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--gutter-xs);
+}
+
+.desktop-notification__text {
+  font-size: var(--fs-sm);
+}
+
+.desktop-notification__link {
+  color: var(--clr-icon);
+}

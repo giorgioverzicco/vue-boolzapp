@@ -16,6 +16,15 @@
   --clr-received: #ffffff;
   --clr-notification: #8edafc;
 
+  --border-sz: 0.0625rem;
+
+  --gutter-xs: 0.625rem;
+  --gutter-sm: 0.9375rem;
+  --gutter-md: 1.25rem;
+  --gutter-lg: 2.5rem;
+
+  --fs-xxs: 0.875rem;
+  --fs-xs: 1rem;
   --fs-sm: 1.125rem;
   --fs-md: 1.5rem;
   --fs-lg: 1.75rem;
