@@ -1,0 +1,22 @@
+/* ===================
+  VARS
+=================== */
+:root {
+  --clr-bg-primary: #dbdbd3;
+  --clr-bg-secondary: #009688;
+
+  --clr-primary: #fff;
+  --clr-secondary: #eaeaea;
+  --clr-accent: #f3eeea;
+
+  --clr-search-bar: #fafafa;
+  --clr-icon: #b1b1b1;
+  --clr-hover: #e9ebeb;
+  --clr-sent: #d5f9ba;
+  --clr-received: #ffffff;
+  --clr-notification: #8edafc;
+
+  --fs-sm: 1.125rem;
+  --fs-md: 1.5rem;
+  --fs-lg: 1.75rem;
+}

@@ -1,41 +1,6 @@
-/* ===================
-  RESET
-=================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ===================
-  VARS
-=================== */
-:root {
-  --clr-bg-primary: #dbdbd3;
-  --clr-bg-secondary: #009688;
-
-  --clr-primary: #fff;
-  --clr-secondary: #eaeaea;
-  --clr-accent: #f3eeea;
-
-  --clr-search-bar: #fafafa;
-  --clr-icon: #b1b1b1;
-  --clr-hover: #e9ebeb;
-  --clr-sent: #d5f9ba;
-  --clr-received: #ffffff;
-  --clr-notification: #8edafc;
-
-  --fs-sm: 1.125rem;
-  --fs-md: 1.5rem;
-  --fs-lg: 1.75rem;
-}
-
-/* ===================
-  TYPO
-=================== */
-body {
-  font-family: "Lato", sans-serif;
-}
+@import "./_reset.css";
+@import "./_variables.css";
+@import "./_typography.css";
 
 /* ===================
   GLOBALS
@@ -68,13 +33,11 @@ body {
 
 .app__left {
   width: 40%;
-  background-color: limegreen;
 }
 
 .app__right {
   position: relative;
   width: 60%;
-  background-color: salmon;
 }
 
 /* ===================
