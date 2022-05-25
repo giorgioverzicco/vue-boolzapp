@@ -2,7 +2,7 @@
   CHATS
 =================== */
 .chat {
-  height: calc(100% - 10rem);
+  height: 100%;
   padding: var(--gutter-md);
   background-image: url(../../img/mine.jpg);
   background-position: center;

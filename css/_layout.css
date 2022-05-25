@@ -19,10 +19,14 @@
   overflow: hidden;
 }
 
-.app__left {
+.app__left,
+.app__right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.app__left {
   width: 40%;
 }
 
