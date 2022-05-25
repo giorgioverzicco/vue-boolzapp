@@ -253,7 +253,7 @@ const app = new Vue({
       contact.messages.push(message);
       this.newMessage = "";
 
-      this.currentContactId = this.contacts.indexOf(contact);
+      this.currentContactId = 0;
 
       this.getReplyFrom(contact);
     },
