@@ -224,7 +224,8 @@ body {
   cursor: pointer;
 }
 
-.contact:hover {
+.contact:hover,
+.contact--selected {
   background-color: var(--clr-hover);
 }
 

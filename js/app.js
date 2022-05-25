@@ -4,7 +4,7 @@ const app = new Vue({
   el: "#app",
   data: {
     replyTimeoutId: null,
-    currentContactId: 0,
+    currentContactObj: null,
     newMessage: "",
     searchText: "",
     user: {
@@ -178,7 +178,7 @@ const app = new Vue({
   computed: {
     filteredContacts() {
       if (!this.searchText) {
-        return this.contacts.sort((a, b) => {
+        this.contacts.sort((a, b) => {
           const rawDateA = a.messages.at(-1).date;
           const rawDateB = b.messages.at(-1).date;
 
@@ -196,7 +196,7 @@ const app = new Vue({
       return this.contacts.filter((c) => c.name.toLowerCase().includes(this.searchText));
     },
     currentContact() {
-      return this.contacts[this.currentContactId];
+      return this.currentContactObj || this.contacts[0];
     },
   },
   methods: {
@@ -238,8 +238,8 @@ const app = new Vue({
     getActualDate() {
       return DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
     },
-    selectContact(index) {
-      this.currentContactId = index;
+    selectContact(contact) {
+      this.currentContactObj = contact;
     },
     sendMessage(contact) {
       if (!this.newMessage) return;
@@ -253,7 +253,7 @@ const app = new Vue({
       contact.messages.push(message);
       this.newMessage = "";
 
-      this.currentContactId = 0;
+      this.currentContactObj = contact;
 
       this.getReplyFrom(contact);
     },
