@@ -8,6 +8,7 @@ const app = new Vue({
     newMessage: "",
     searchText: "",
     notificationClosed: false,
+    editMode: false,
     user: {
       name: "Sofia",
       avatar: "_io",
@@ -180,11 +181,12 @@ const app = new Vue({
     filteredContacts() {
       if (!this.searchText) {
         this.contacts.sort((a, b) => {
-          const rawDateA = a.messages.at(-1).date;
-          const rawDateB = b.messages.at(-1).date;
+          const nullDate = "01/01/1980 00:00:00";
+          const rawDateA = a.messages.at(-1)?.date || nullDate;
+          const rawDateB = b.messages.at(-1)?.date || nullDate;
 
-          const dateA = DateTime.fromFormat(rawDateA, "dd/MM/yyyy HH:mm:ss");
-          const dateB = DateTime.fromFormat(rawDateB, "dd/MM/yyyy HH:mm:ss");
+          const dateA = this.getFormatDate(rawDateA);
+          const dateB = this.getFormatDate(rawDateB);
 
           const diffA = DateTime.now().diff(dateA, "seconds").seconds;
           const diffB = DateTime.now().diff(dateB, "seconds").seconds;
@@ -204,17 +206,24 @@ const app = new Vue({
     getImage(name) {
       return `img/avatar${name}.jpg`;
     },
+    getFormatDate(date) {
+      return DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss");
+    },
     getMessageHour(message) {
-      return DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+      return this.getFormatDate(message.date).toFormat("HH:mm");
     },
     getLastMessageText(contact) {
       const message = contact.messages.at(-1);
+      if (!message) return "";
+
       return message.status === "sent" ? `Tu: ${message.message}` : message.message;
     },
     getLastAccess(contact) {
-      const rawDate = contact.messages.filter((m) => m.status === "received").at(-1).date;
+      const lastMessage = contact.messages.filter((m) => m.status === "received").at(-1);
+      if (!lastMessage) return "";
 
-      const date = DateTime.fromFormat(rawDate, "dd/MM/yyyy HH:mm:ss");
+      const rawDate = lastMessage.date;
+      const date = this.getFormatDate(rawDate);
       const diff = DateTime.now().diff(date, "days");
       const relativeDate = date.toRelativeCalendar();
 
@@ -226,7 +235,9 @@ const app = new Vue({
     },
     getLastMessageHour(contact) {
       const lastMessage = contact.messages.at(-1);
-      const lastDate = DateTime.fromFormat(lastMessage.date, "dd/MM/yyyy HH:mm:ss");
+      if (!lastMessage) return "";
+
+      const lastDate = this.getFormatDate(lastMessage.date);
       const diff = DateTime.now().diff(lastDate, "days");
 
       if (diff.days < 1) {
