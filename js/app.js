@@ -261,6 +261,7 @@ const app = new Vue({
         date: this.getActualDate(),
         message: this.newMessage,
         status: "sent",
+        menuOpen: false,
       };
 
       contact.messages.push(message);
@@ -276,6 +277,7 @@ const app = new Vue({
           date: this.getActualDate(),
           message: "ok ricevuto!",
           status: "received",
+          menuOpen: false,
         };
 
         contact.messages.push(message);
@@ -283,7 +285,7 @@ const app = new Vue({
       }, 1000);
     },
     openMenu(message) {
-      Vue.set(message, "menuOpen", !message.menuOpen);
+      message.menuOpen = !message.menuOpen;
     },
     deleteMessage(index) {
       this.currentContact.messages.splice(index, 1);
@@ -291,5 +293,8 @@ const app = new Vue({
     closeNotification() {
       this.notificationClosed = true;
     },
+  },
+  created() {
+    this.contacts.forEach((c) => c.messages.forEach((m) => Vue.set(m, "menuOpen", false)));
   },
 });
