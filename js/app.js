@@ -252,6 +252,7 @@ const app = new Vue({
       return DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
     },
     selectContact(contact) {
+      this.currentContact.chatHeight = this.$refs.chat.scrollTop;
       this.currentContactObj = contact;
     },
     sendMessage(contact) {
@@ -268,6 +269,7 @@ const app = new Vue({
       this.newMessage = "";
 
       this.currentContactObj = contact;
+      this.currentContact.chatHeight = this.$refs.chat.scrollHeight;
 
       this.getReplyFrom(contact);
     },
@@ -281,6 +283,7 @@ const app = new Vue({
         };
 
         contact.messages.push(message);
+        this.currentContact.chatHeight = this.$refs.chat.scrollHeight;
         clearTimeout(this.replyTimeoutId);
       }, 1000);
     },
@@ -295,6 +298,12 @@ const app = new Vue({
     },
   },
   created() {
-    this.contacts.forEach((c) => c.messages.forEach((m) => Vue.set(m, "menuOpen", false)));
+    this.contacts.forEach((c) => {
+      Vue.set(c, "chatHeight", 0);
+      c.messages.forEach((m) => Vue.set(m, "menuOpen", false));
+    });
+  },
+  updated() {
+    this.$refs.chat.scrollTop = this.currentContact.chatHeight;
   },
 });
