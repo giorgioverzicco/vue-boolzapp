@@ -17,127 +17,132 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="o-appContainer">
-      <div id="app" class="o-app">
-        <div class="o-app__left">
-          <div class="m-bar -border">
-            <div class="m-avatar">
-              <img class="a-circle" :src="getImage(user)" alt="" />
-            </div>
-            <div class="m-bar__wrapper -right">
-              <button class="a-button">
-                <i class="fa-solid fa-circle-notch"></i>
-              </button>
-              <button class="a-button">
-                <i class="fa-solid fa-message"></i>
-              </button>
-              <button class="a-button">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="m-notification" v-if="!notificationClosed">
-            <div class="a-circle">
-              <i class="fa-solid fa-bell-slash"></i>
-            </div>
-            <div class="m-notification__wrapper">
-              <div class="a-text">Ricevi notifiche di nuovi messaggi</div>
-              <div class="m-notification__link-wrapper">
-                <a class="m-notification__link" href="#" @click.prevent="closeNotification">Attiva notifiche desktop</a>
-                <span class="m-notification__link-icon">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="m-bar m-searchBar">
-            <input class="a-textInput" type="text" placeholder="Scrivi un messaggio" v-model="searchText" />
-            <button class="a-button">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-
-          <div class="o-contacts">
-            <div
-              class="m-contact"
-              v-for="contact in filteredContacts"
-              :key="contact.name"
-              :class="{'-active': currentContact === contact}"
-              @click="selectContact(contact)"
-            >
+    <div id="app">
+      <div class="o-appContainer" :class="{ dark: darkMode }">
+        <div class="o-app">
+          <div class="o-app__left">
+            <div class="m-bar -border">
               <div class="m-avatar">
-                <img class="a-circle" :src="getImage(contact)" alt="" />
+                <img class="a-circle" :src="getImage(user)" alt="" />
               </div>
-              <div class="m-contact__wrapper">
-                <div class="a-text">{{ contact.name }}</div>
-                <div class="a-text -small -secondary">{{ getLastMessageText(contact) }}</div>
-                <div class="a-text -date -secondary">{{ getLastMessageHour(contact) }}</div>
+              <div class="m-bar__wrapper -right">
+                <button class="a-button" @click="toggleDarkMode">
+                  <i v-if="!darkMode" class="fa-solid fa-moon"></i>
+                  <i v-else class="fa-solid fa-sun"></i>
+                </button>
+                <button class="a-button">
+                  <i class="fa-solid fa-message"></i>
+                </button>
+                <button class="a-button">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="o-app__right">
-          <div class="m-bar">
-            <div class="m-avatar">
-              <img class="a-circle" :src="getImage(currentContact)" alt="" />
+            <div class="m-notification" v-if="!notificationClosed">
+              <div class="a-circle">
+                <i class="fa-solid fa-bell-slash"></i>
+              </div>
+              <div class="m-notification__wrapper">
+                <div class="a-text">Ricevi notifiche di nuovi messaggi</div>
+                <div class="m-notification__link-wrapper">
+                  <a class="m-notification__link" href="#" @click.prevent="closeNotification"
+                    >Attiva notifiche desktop</a
+                  >
+                  <span class="m-notification__link-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="m-bar__wrapperInfo">
-              <span class="a-text">{{ currentContact.name }}</span>
-              <span class="a-text -date -secondary" v-if="currentContact.messages.length > 0"
-                >Ultimo accesso {{ getLastAccess(currentContact) }}</span
-              >
-            </div>
-            <div class="m-bar__wrapper -right">
+
+            <div class="m-bar m-searchBar">
+              <input class="a-textInput" type="text" placeholder="Scrivi un messaggio" v-model="searchText" />
               <button class="a-button">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-              <button class="a-button">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </button>
             </div>
-          </div>
 
-          <div class="m-chat" ref="chat">
-            <div
-              class="m-message"
-              v-for="(message, idx) in currentContact.messages"
-              :class="`-${message.status}`"
-              @mouseleave="message.menuOpen = false"
-            >
-              <div class="a-text">{{ message.message }}</div>
-              <div class="a-text -date -secondary">{{ getMessageHour(message) }}</div>
-              <button class="a-button" @click="openMenu(message)">
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="a-dropdown" v-show="message.menuOpen">
-                <div class="a-dropdown__item" @click="deleteMessage(idx)">Cancella messaggio</div>
+            <div class="o-contacts">
+              <div
+                class="m-contact"
+                v-for="contact in filteredContacts"
+                :key="contact.name"
+                :class="{'-active': currentContact === contact}"
+                @click="selectContact(contact)"
+              >
+                <div class="m-avatar">
+                  <img class="a-circle" :src="getImage(contact)" alt="" />
+                </div>
+                <div class="m-contact__wrapper">
+                  <div class="a-text">{{ contact.name }}</div>
+                  <div class="a-text -small -secondary">{{ getLastMessageText(contact) }}</div>
+                  <div class="a-text -date -secondary">{{ getLastMessageHour(contact) }}</div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="m-bar">
-            <div class="m-bar__wrapper">
-              <button class="a-button">
-                <i class="fa-regular fa-face-laugh"></i>
-              </button>
-              <button class="a-button">
-                <i class="fa-solid fa-paperclip"></i>
-              </button>
+          <div class="o-app__right">
+            <div class="m-bar">
+              <div class="m-avatar">
+                <img class="a-circle" :src="getImage(currentContact)" alt="" />
+              </div>
+              <div class="m-bar__wrapperInfo">
+                <span class="a-text">{{ currentContact.name }}</span>
+                <span class="a-text -date -secondary" v-if="currentContact.messages.length > 0"
+                  >Ultimo accesso {{ getLastAccess(currentContact) }}</span
+                >
+              </div>
+              <div class="m-bar__wrapper -right">
+                <button class="a-button">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="a-button">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+              </div>
             </div>
-            <input
-              class="a-textInput"
-              type="text"
-              placeholder="Scrivi un messaggio"
-              v-model="newMessage"
-              @keyup.enter="sendMessage(currentContact)"
-            />
-            <div class="m-bar__wrapper">
-              <button class="a-button">
-                <i class="fa-solid fa-microphone"></i>
-              </button>
+
+            <div class="m-chat" ref="chat">
+              <div
+                class="m-message"
+                v-for="(message, idx) in currentContact.messages"
+                :class="`-${message.status}`"
+                @mouseleave="message.menuOpen = false"
+              >
+                <div class="a-text">{{ message.message }}</div>
+                <div class="a-text -date -secondary">{{ getMessageHour(message) }}</div>
+                <button class="a-button" @click="openMenu(message)">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="a-dropdown" v-show="message.menuOpen">
+                  <div class="a-dropdown__item" @click="deleteMessage(idx)">Cancella messaggio</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="m-bar">
+              <div class="m-bar__wrapper">
+                <button class="a-button">
+                  <i class="fa-regular fa-face-laugh"></i>
+                </button>
+                <button class="a-button">
+                  <i class="fa-solid fa-paperclip"></i>
+                </button>
+              </div>
+              <input
+                class="a-textInput"
+                type="text"
+                placeholder="Scrivi un messaggio"
+                v-model="newMessage"
+                @keyup.enter="sendMessage(currentContact)"
+              />
+              <div class="m-bar__wrapper">
+                <button class="a-button">
+                  <i class="fa-solid fa-microphone"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>

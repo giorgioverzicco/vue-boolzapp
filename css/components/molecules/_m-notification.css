@@ -19,7 +19,7 @@
 }
 
 .m-notification__link {
-  color: var(--clg-text-secondary);
+  color: var(--clr-text-secondary);
   font-size: var(--fs-xs);
   text-decoration: none;
 }
@@ -29,5 +29,6 @@
 }
 
 .m-notification__link-icon {
+  color: var(--clr-text-secondary);
   font-size: var(--fs-xxxs);
 }

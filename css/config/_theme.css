@@ -1,0 +1,22 @@
+.dark {
+  --clr-bg-base: #111b21;
+  --clr-bg-primary: #0a1014;
+  --clr-bg-secondary: #0a1014;
+  --clr-bg-input-message: #2a3942;
+  --clr-bg-input-search: #202c33;
+  --clr-bg-notification: #182229;
+  --clr-bg-hover: #202c33;
+  --clr-bg-chat: #0b141a;
+  --clr-text-primary: #fff;
+  --clr-text-secondary: #667781;
+  --clr-bar: #202c33;
+  --clr-bar-input-search: #111b21;
+  --clr-icon: #aebac1;
+  --clr-icon-rgb: 174, 186, 193;
+  --clr-icon-notification: #53bdeb;
+  --clr-sent: #005c4b;
+  --clr-sent-rgb: 0, 92, 75;
+  --clr-received: #202c33;
+  --clr-received-rgb: 32, 44, 51;
+  --clr-scroll: #374045;
+}

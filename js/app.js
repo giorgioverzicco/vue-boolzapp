@@ -9,6 +9,7 @@ const app = new Vue({
     searchText: "",
     notificationClosed: false,
     editMode: false,
+    darkMode: false,
     user: {
       name: "Sofia",
       avatar: "_io",
@@ -294,6 +295,9 @@ const app = new Vue({
     },
     closeNotification() {
       this.notificationClosed = true;
+    },
+    toggleDarkMode() {
+      this.darkMode = !this.darkMode;
     },
   },
   created() {

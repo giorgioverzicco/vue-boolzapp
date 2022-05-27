@@ -2,5 +2,6 @@
 @import "./config/_variables.css";
 @import "./config/_scrollbar.css";
 @import "./config/_typography.css";
+@import "./config/_theme.css";
 
 @import "./components/_components.css";
