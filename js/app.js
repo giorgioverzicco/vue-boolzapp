@@ -203,8 +203,8 @@ const app = new Vue({
     },
   },
   methods: {
-    getImage(name) {
-      return `img/avatar${name}.jpg`;
+    getImage(obj) {
+      return `img/avatar${obj.avatar}.jpg`;
     },
     getFormatDate(date) {
       return DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss");
@@ -268,8 +268,7 @@ const app = new Vue({
       contact.messages.push(message);
       this.newMessage = "";
 
-      this.currentContactObj = contact;
-      this.currentContact.chatHeight = this.$refs.chat.scrollHeight;
+      contact.chatHeight = this.$refs.chat.scrollHeight;
 
       this.getReplyFrom(contact);
     },
@@ -283,7 +282,7 @@ const app = new Vue({
         };
 
         contact.messages.push(message);
-        this.currentContact.chatHeight = this.$refs.chat.scrollHeight;
+        contact.chatHeight = this.$refs.chat.scrollHeight;
         clearTimeout(this.replyTimeoutId);
       }, 1000);
     },

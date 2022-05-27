@@ -1,0 +1,5 @@
+.o-contacts {
+  height: 100%;
+  background-color: var(--clr-bg-base);
+  overflow: auto;
+}

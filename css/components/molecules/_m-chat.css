@@ -1,0 +1,18 @@
+.m-chat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-xs);
+  height: 100%;
+  padding: var(--spacer-md) var(--spacer-lg);
+  background-color: var(--clr-bg-chat);
+  background-image: url(../../../img/background-pattern.png);
+  overflow: auto;
+}
+
+.m-chat .m-message.-sent {
+  margin-left: auto;
+}
+
+.m-chat .m-message.-received {
+  margin-right: auto;
+}

@@ -1,0 +1,18 @@
+.a-textInput {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: var(--fs-md);
+  color: var(--clr-text-primary);
+  background-color: var(--clr-bg-input-message);
+  border: 0.0625rem solid var(--clr-bg-input-message);
+  border-radius: var(--border-radius);
+}
+
+.a-textInput::placeholder {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-secondary);
+}
+
+.a-textInput:focus {
+  outline: none;
+}

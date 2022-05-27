@@ -1,31 +1,54 @@
-/* ===================
-  VARS
-=================== */
 :root {
-  --clr-bg-primary: #dbdbd3;
-  --clr-bg-secondary: #009688;
-
-  --clr-primary: #fff;
-  --clr-secondary: #eaeaea;
-  --clr-accent: #f3eeea;
-
-  --clr-search-bar: #fafafa;
-  --clr-icon: #b1b1b1;
-  --clr-hover: #e9ebeb;
-  --clr-sent: #d5f9ba;
+  --clr-bg-base: #fff;
+  --clr-bg-primary: #e2e1dd;
+  --clr-bg-secondary: #00a884;
+  --clr-bg-input-message: #ffffff;
+  --clr-bg-input-search: #f0f2f5;
+  --clr-bg-notification: #53bdeb;
+  --clr-bg-hover: #f5f6f6;
+  --clr-bg-chat: #efeae2;
+  --clr-text-primary: #000;
+  --clr-text-secondary: #667781;
+  --clr-bar: #f0f2f5;
+  --clr-bar-input-search: #ffffff;
+  --clr-icon: #54656f;
+  --clr-icon-rgb: 84, 101, 111;
+  --clr-icon-notification: #ffffff;
+  --clr-sent: #d9fdd3;
+  --clr-sent-rgb: 217, 253, 211;
   --clr-received: #ffffff;
-  --clr-notification: #8edafc;
+  --clr-received-rgb: 255, 255, 255;
+  --clr-scroll: #ced0d1;
 
-  --border-sz: 0.0625rem;
+  --spacer-xxs: 0.3125rem;
+  --spacer-xs: 0.625rem;
+  --spacer-sm: 0.9375rem;
+  --spacer-md: 1.25rem;
+  --spacer-lg: 2.5rem;
+  --spacer-xl: 3.75rem;
+  --spacer-xxl: 5rem;
 
-  --gutter-xs: 0.625rem;
-  --gutter-sm: 0.9375rem;
-  --gutter-md: 1.25rem;
-  --gutter-lg: 2.5rem;
+  --border-radius: 0.5rem;
 
-  --fs-xxs: 0.875rem;
-  --fs-xs: 1rem;
-  --fs-sm: 1.125rem;
-  --fs-md: 1.5rem;
-  --fs-lg: 1.75rem;
+  --fs-xxxs: 0.6875rem;
+  --fs-xxs: 0.75rem;
+  --fs-xs: 0.875rem;
+  --fs-sm: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.375rem;
+  --fs-xxl: 1.5rem;
+
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+  --fw-900: 900;
+
+  --bar-height: 3.125rem;
+  --notification-height: 5.625rem;
+  --search-bar-height: 2.5rem;
+  --contact-height: 4.625rem;
+
+  --message-width: 20rem;
 }

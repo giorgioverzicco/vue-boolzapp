@@ -1,0 +1,57 @@
+.m-message {
+  position: relative;
+  width: var(--message-width);
+  padding: var(--spacer-xs);
+  border-radius: var(--border-radius);
+  word-break: break-all;
+}
+
+.m-message.-sent {
+  background-color: var(--clr-sent);
+}
+
+.m-message.-received {
+  background-color: var(--clr-received);
+}
+
+.m-message .a-text {
+  margin-bottom: var(--spacer-xs);
+}
+
+.m-message .a-text.-date {
+  position: absolute;
+  bottom: var(--spacer-xxs);
+  right: var(--spacer-xs);
+  margin: 0;
+}
+
+.m-message .a-button {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: var(--fs-xs);
+  transition: opacity 0.4s, background-image 0.4s;
+}
+
+.m-message:hover .a-button {
+  opacity: 1;
+}
+
+.m-message.-sent:hover .a-button {
+  background-image: radial-gradient(at top right, rgba(var(--clr-sent-rgb), 1) 60%, rgba(var(--clr-sent-rgb), 0) 100%);
+}
+
+.m-message.-received:hover .a-button {
+  background-image: radial-gradient(
+    at top right,
+    rgba(var(--clr-received-rgb), 1) 60%,
+    rgba(var(--clr-received-rgb), 0) 100%
+  );
+}
+
+.m-message .a-dropdown {
+  position: absolute;
+  bottom: -2.1875rem;
+  right: -0.625rem;
+}

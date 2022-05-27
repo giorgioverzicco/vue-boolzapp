@@ -1,11 +1,6 @@
 @import "./config/_reset.css";
 @import "./config/_variables.css";
-@import "./config/_typography.css";
-@import "./config/_global.css";
 @import "./config/_scrollbar.css";
-@import "./_layout.css";
-@import "./components/_bars.css";
-@import "./components/_notifications.css";
-@import "./components/_contacts.css";
-@import "./components/_chats.css";
-@import "./components/_buttons.css";
+@import "./config/_typography.css";
+
+@import "./components/_components.css";

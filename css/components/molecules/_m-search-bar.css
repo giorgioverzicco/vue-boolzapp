@@ -1,0 +1,23 @@
+.m-searchBar {
+  position: relative;
+  background-color: var(--clr-bar-input-search);
+  border-bottom: 0.0625rem solid rgba(var(--clr-icon-rgb), 0.25);
+}
+
+.m-searchBar .a-textInput {
+  padding-left: var(--spacer-lg);
+  font-size: var(--fs-sm);
+  background-color: var(--clr-bar);
+}
+
+.m-searchBar .a-textInput::placeholder {
+  font-size: var(--fs-xs);
+}
+
+.m-searchBar .a-button {
+  position: absolute;
+  top: 50%;
+  left: var(--spacer-sm);
+  transform: translateY(-50%);
+  font-size: var(--fs-xs);
+}

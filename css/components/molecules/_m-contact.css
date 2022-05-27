@@ -1,0 +1,29 @@
+.m-contact {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-sm);
+  height: var(--contact-height);
+  padding: var(--spacer-xs);
+  background-color: var(--clr-bg-base);
+  cursor: pointer;
+}
+
+.m-contact:hover,
+.m-contact.-active {
+  background-color: var(--clr-bg-hover);
+}
+
+.m-contact .m-avatar {
+  padding: var(--spacer-xs);
+}
+
+.m-contact__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.m-contact .a-text.-date {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -1,0 +1,20 @@
+.o-app {
+  display: flex;
+  max-width: 103.125rem;
+  height: 100%;
+  margin: auto;
+  padding: var(--spacer-md);
+}
+
+.o-app__left {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.o-app__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+}

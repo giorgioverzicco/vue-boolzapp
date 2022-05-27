@@ -1,0 +1,4 @@
+.o-appContainer {
+  height: 100vh;
+  background-image: linear-gradient(0deg, var(--clr-bg-primary) 87%, var(--clr-bg-secondary) 13%);
+}

@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boolzapp</title>
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-    <!-- /google fonts -->
+    <title>WhatsApp Web</title>
     <!-- font awesome -->
     <link
       rel="stylesheet"
@@ -22,124 +17,128 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div id="app">
-        <div class="app__left">
-          <div class="bar user-bar">
-            <div class="user-bar__left">
-              <img class="user-bar__img" :src="getImage(user.avatar)" alt="" />
-              <span class="user-bar__name">{{ user.name }}</span>
+    <div class="o-appContainer">
+      <div id="app" class="o-app">
+        <div class="o-app__left">
+          <div class="m-bar -border">
+            <div class="m-avatar">
+              <img class="a-circle" :src="getImage(user)" alt="" />
             </div>
-            <div class="user-bar__right">
-              <button class="btn btn-stories">
+            <div class="m-bar__wrapper -right">
+              <button class="a-button">
                 <i class="fa-solid fa-circle-notch"></i>
               </button>
-              <button class="btn btn-new-message">
+              <button class="a-button">
                 <i class="fa-solid fa-message"></i>
               </button>
-              <button class="btn btn-options">
+              <button class="a-button">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
             </div>
           </div>
-          <div class="desktop-notification" v-if="!notificationClosed">
-            <div class="desktop-notification__icon">
+
+          <div class="m-notification" v-if="!notificationClosed">
+            <div class="a-circle">
               <i class="fa-solid fa-bell-slash"></i>
             </div>
-            <div class="desktop-notification__text-wrapper">
-              <span class="desktop-notification__text">Ricevi notifiche di nuovi messaggi</span>
-              <a class="desktop-notification__link" href="#">Attiva notifiche desktop</a>
-            </div>
-            <div class="btn btn-close btn-close--fixed" @click="closeNotification">
-              <i class="fa-solid fa-xmark"></i>
-            </div>
-          </div>
-          <div class="search-bar">
-            <div class="search-bar__wrapper">
-              <input
-                class="search-bar__text-input"
-                type="text"
-                placeholder="Cerca o inizia una nuova chat"
-                v-model="searchText"
-              />
-              <button class="btn btn-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
+            <div class="m-notification__wrapper">
+              <div class="a-text">Ricevi notifiche di nuovi messaggi</div>
+              <div class="m-notification__link-wrapper">
+                <a class="m-notification__link" href="#" @click.prevent="closeNotification">Attiva notifiche desktop</a>
+                <span class="m-notification__link-icon">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="contacts">
+
+          <div class="m-bar m-searchBar">
+            <input class="a-textInput" type="text" placeholder="Scrivi un messaggio" v-model="searchText" />
+            <button class="a-button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+
+          <div class="o-contacts">
             <div
-              class="contact"
+              class="m-contact"
               v-for="contact in filteredContacts"
-              :class="{'contact--selected': currentContact === contact}"
               :key="contact.name"
+              :class="{'-active': currentContact === contact}"
               @click="selectContact(contact)"
             >
-              <img class="contact__img" :src="getImage(contact.avatar)" alt="" />
-              <div class="contact__text-wrapper">
-                <span class="contact__name">{{ contact.name }}</span>
-                <span class="contact__message">{{ getLastMessageText(contact) }}</span>
+              <div class="m-avatar">
+                <img class="a-circle" :src="getImage(contact)" alt="" />
               </div>
-              <span class="contact__date">{{ getLastMessageHour(contact) }}</span>
+              <div class="m-contact__wrapper">
+                <div class="a-text">{{ contact.name }}</div>
+                <div class="a-text -small -secondary">{{ getLastMessageText(contact) }}</div>
+                <div class="a-text -date -secondary">{{ getLastMessageHour(contact) }}</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="app__right">
-          <div class="bar contact-bar">
-            <div class="contact-bar__left">
-              <img class="contact-bar__img" :src="getImage(currentContact.avatar)" alt="" />
-              <div class="contact-bar__text-wrapper">
-                <span class="contact-bar__name">{{ currentContact.name }}</span>
-                <span class="contact-bar__date">Ultimo accesso {{ getLastAccess(currentContact) }}</span>
-              </div>
+
+        <div class="o-app__right">
+          <div class="m-bar">
+            <div class="m-avatar">
+              <img class="a-circle" :src="getImage(currentContact)" alt="" />
             </div>
-            <div class="contact-bar__right">
-              <button class="btn btn-search">
+            <div class="m-bar__wrapperInfo">
+              <span class="a-text">{{ currentContact.name }}</span>
+              <span class="a-text -date -secondary" v-if="currentContact.messages.length > 0"
+                >Ultimo accesso {{ getLastAccess(currentContact) }}</span
+              >
+            </div>
+            <div class="m-bar__wrapper -right">
+              <button class="a-button">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-              <button class="btn btn-file">
-                <i class="fa-solid fa-paperclip"></i>
-              </button>
-              <button class="btn btn-options">
+              <button class="a-button">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
             </div>
           </div>
-          <div class="chat" ref="chat">
+
+          <div class="m-chat" ref="chat">
             <div
-              class="chat-message"
+              class="m-message"
               v-for="(message, idx) in currentContact.messages"
-              :class="{
-                'chat-message--sent': message.status === 'sent',
-                'chat-message--received': message.status === 'received'
-              }"
+              :class="`-${message.status}`"
+              @mouseleave="message.menuOpen = false"
             >
-              <div class="chat-message__bubble">
-                <div class="chat-message__text">{{ message.message }}</div>
-                <div class="chat-message__date">{{ getMessageHour(message) }}</div>
-                <div class="chat-message__options" @click="openMenu(message)">
-                  <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="chat-message__menu" v-if="message.menuOpen">
-                  <div class="chat-message__menu-item" @click="deleteMessage(idx)">Cancella messaggio</div>
-                </div>
+              <div class="a-text">{{ message.message }}</div>
+              <div class="a-text -date -secondary">{{ getMessageHour(message) }}</div>
+              <button class="a-button" @click="openMenu(message)">
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <div class="a-dropdown" v-show="message.menuOpen">
+                <div class="a-dropdown__item" @click="deleteMessage(idx)">Cancella messaggio</div>
               </div>
             </div>
           </div>
-          <div class="bar message-bar">
-            <button class="btn btn-emoji">
-              <i class="fa-regular fa-face-smile"></i>
-            </button>
+
+          <div class="m-bar">
+            <div class="m-bar__wrapper">
+              <button class="a-button">
+                <i class="fa-regular fa-face-laugh"></i>
+              </button>
+              <button class="a-button">
+                <i class="fa-solid fa-paperclip"></i>
+              </button>
+            </div>
             <input
-              class="message-bar__text-input"
+              class="a-textInput"
               type="text"
               placeholder="Scrivi un messaggio"
               v-model="newMessage"
               @keyup.enter="sendMessage(currentContact)"
             />
-            <button class="btn btn-audio">
-              <i class="fa-solid fa-microphone"></i>
-            </button>
+            <div class="m-bar__wrapper">
+              <button class="a-button">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

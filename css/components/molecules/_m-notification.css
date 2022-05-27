@@ -1,0 +1,33 @@
+.m-notification {
+  display: flex;
+  align-items: center;
+  gap: var(--spacer-sm);
+  height: var(--notification-height);
+  padding: var(--spacer-sm);
+  background-color: var(--clr-bg-notification);
+  cursor: pointer;
+}
+
+.m-notification .a-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  height: 2.5rem;
+  color: var(--clr-bg-notification);
+  background-color: var(--clr-icon-notification);
+}
+
+.m-notification__link {
+  color: var(--clg-text-secondary);
+  font-size: var(--fs-xs);
+  text-decoration: none;
+}
+
+.m-notification__link:hover {
+  text-decoration: underline;
+}
+
+.m-notification__link-icon {
+  font-size: var(--fs-xxxs);
+}

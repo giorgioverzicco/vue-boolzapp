@@ -1,0 +1,14 @@
+.a-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  height: var(--fs-sm);
+  padding: var(--fs-sm);
+  font-size: var(--fs-md);
+  color: var(--clr-icon);
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.m-avatar {
+  aspect-ratio: 1;
+  height: inherit;
+}
+
+.m-avatar img {
+  height: 100%;
+}

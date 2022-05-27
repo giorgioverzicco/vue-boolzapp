@@ -1,0 +1,17 @@
+.a-text {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-400);
+  color: var(--clr-text-primary);
+}
+
+.a-text.-small {
+  font-size: var(--fs-xs);
+}
+
+.a-text.-secondary {
+  color: var(--clr-text-secondary);
+}
+
+.a-text.-date {
+  font-size: var(--fs-xxs);
+}
